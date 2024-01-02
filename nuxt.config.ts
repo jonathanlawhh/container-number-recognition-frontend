@@ -17,6 +17,12 @@ export default defineNuxtConfig({
     build: {
         transpile: ['vuetify'],
     },
+    site: {
+        url: 'https://cnrai.jonathanlawhh.com/',
+        name: 'CNRAI',
+        cacheTtl: 1000 * 60 * 60 * 24 * 30,
+        trailingSlash: true,
+    },
     vite: {
         define: {
             'process.env.DEBUG': false,
@@ -26,5 +32,5 @@ export default defineNuxtConfig({
         public: {
             ctnrApiUrl: process.env.NUXT_CTNR_API_URL
         }
-    }
+    },
 })

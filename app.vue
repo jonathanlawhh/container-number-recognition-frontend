@@ -15,19 +15,20 @@
       <NuxtPage></NuxtPage>
     </v-container>
 
-    <PageFooter></PageFooter>
+    <PageFooter class="mt-16"></PageFooter>
   </v-app>
 </template>
 
 <script setup>
-
 let title = 'Container Number Recognition AI'
+let desc = 'Revolutionize logistics operations with effortless monitoring. Container number recognition using AI (CNRAI) extracts container numbers from images, saving time and improving operational efficiency and reducing supply chain risk.'
+
 useSeoMeta({
   title: title,
   ogTitle: title,
-  description: '',
-  ogDescription: '',
-  ogImage: 'https://jonathanlawhh.com/img/me.webp',
+  description: desc,
+  ogDescription: desc,
+  ogImage: 'https://cnrai.jonathanlawhh.com/img/og/container_ai_header.jpg',
   twitterCard: 'summary_large_image',
 })
 </script>

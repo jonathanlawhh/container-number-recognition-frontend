@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
-    "@tensorflow/tfjs": "^4.15.0"
+    "@tensorflow/tfjs": "^4.15.0",
+    "nuxt-simple-sitemap": "^4.2.3"
   }
 }

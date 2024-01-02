@@ -6,10 +6,12 @@
       </v-col>
 
       <v-col cols="12" md="4" v-for="(w ,i) in why_data" :key="i">
-        <v-card min-height="148px" max-width="500" variant="outlined" color="white" style="background-color:#e85a45"
+        <v-card min-height="172px" max-width="500" variant="outlined" color="white" style="background-color:#e85a45"
                 rounded="xl">
-          <v-card-item>
-            <p>{{ w }}</p>
+          <v-card-item class="pa-8">
+            <h4>{{ w[0] }}</h4>
+            <br/>
+            <p>{{ w[1] }}</p>
           </v-card-item>
         </v-card>
       </v-col>
@@ -22,9 +24,9 @@ export default {
   name: "Why",
   data: () => ({
     why_data: [
-      'Instantly identify containers with lightning-fast OCR technology. Track your containers on premise with increased accuracy and minimize delays.',
-      'Streamline your logistics by eliminating manual data entry and human error. Integrate with your existing systems for a seamless workflow and maximize productivity.',
-      'Gain real-time visibility into your container movements from docking to transit. Eliminate uncertainty and reduce risk in the supply chain.'
+      ['Effortless Monitoring', 'Instantly identify containers with lightning-fast OCR technology. Track your containers on premise with increased accuracy and minimize delays.'],
+      ['Operational Efficiency', 'Streamline your logistics by eliminating manual data entry and human error. Integrate with your existing systems for a seamless workflow and maximize productivity.'],
+      ['Supply Chain Security', 'Gain real-time visibility into your container movements from docking to transit. Eliminate uncertainty and reduce risk in the supply chain.']
     ]
   })
 }

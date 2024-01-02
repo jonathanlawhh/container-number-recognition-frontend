@@ -3,3 +3,25 @@ $body-font-family: 'Roboto Mono'
 );
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;500&display=swap');
+
+/* Code for Firefox */
+::-moz-selection {
+  color: #ffffff;
+  background-color: #9a3927;
+}
+
+::selection {
+  color: #ffffff;
+  background-color: #9a3927;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 4px;
+  background: #eae7dc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9a3927;
+  border-radius: 2px;
+}

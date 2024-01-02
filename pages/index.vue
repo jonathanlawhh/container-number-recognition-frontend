@@ -5,17 +5,17 @@
         <v-card rounded="lg">
           <v-row>
             <v-col cols="12" md="6" lg="4" style="max-height: 600px">
-              <v-img min-height="280" width="100%" height="100%" style="background-color: #8e8d8a" src="/img/container_ai_img.png" cover></v-img>
+              <v-img min-height="280" width="100%" height="100%" style="background-color: #8e8d8a" src="/img/container_ai_img.webp" cover></v-img>
             </v-col>
             <v-col cols="12" md="6" lg="8">
-              <v-container>
+              <v-container class="pa-md-8">
                 <h3>Container Number Recognition using AI</h3>
                 <br/>
                 <p>This web application demonstrates the potential of
                   utilizing the technology behind it to achieve operational excellency.</p>
                 <br/><br/>
                 <p> Launch the application and upload an image of a container!</p>
-                <ContainerDetector class="mt-8"></ContainerDetector>
+                <ContainerDetector class="mt-8 text-right"></ContainerDetector>
               </v-container>
             </v-col>
           </v-row>
@@ -24,6 +24,8 @@
     </v-row>
 
     <Why class="text-center mt-8"></Why>
+
+    <How class="text-center mt-8"></How>
 
   </div>
 </template>
