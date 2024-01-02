@@ -14,7 +14,7 @@
 
       <v-row>
         <v-col cols="12" md="10" offset-md="1" lg="8" offset-lg="2">
-          <h2 class="font-weight-black" style="font-size: 8rem">{{ error.statusCode }}...</h2>
+          <h2 class="font-weight-black" style="font-size: 6rem; word-break: break-word;">{{ error.statusCode }}...</h2>
           <p style="font-size: 1.5rem">
             Now this seems worst than a missing container number
           </p>

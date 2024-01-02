@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://cnrai.jonathanlawhh.com/sitemap.xml

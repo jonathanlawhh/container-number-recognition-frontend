@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     build: {
         transpile: ['vuetify'],
     },
+    modules: ['nuxt-simple-sitemap'],
     site: {
         url: 'https://cnrai.jonathanlawhh.com/',
         name: 'CNRAI',
