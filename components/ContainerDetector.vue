@@ -5,7 +5,7 @@
       Launch CNRAI
     </v-btn>
 
-    <v-overlay v-model="overlay" width="100%" height="100%" style="background-color: #d8c3a5; opacity: 1">
+    <v-overlay v-model="overlay" width="100%" height="100%" :style="'background-color: ' + dynamic_bg_color" style="opacity: 1">
       <v-container style="height: 100vh">
         <v-btn icon="mdi-close" size="default" class="close-btn" @click="overlay = false"></v-btn>
         <v-row class="mt-12">
@@ -29,9 +29,9 @@
                   </v-col>
 
                   <v-col cols="12" md="8">
-                    <v-card variant="outlined" height="280">
+                    <v-card variant="outlined" height="280" style="overflow-y: scroll">
                       <v-card-item>
-                        <pre style="overflow-x: auto; word-wrap: break-word; white-space: pre-wrap">{{ output }}</pre>
+                        <pre style="overflow-x: auto; word-wrap: break-word; white-space: pre-wrap; font-size: 14px;">{{ output }}</pre>
                       </v-card-item>
                     </v-card>
                   </v-col>
@@ -68,7 +68,8 @@ export default {
     input_image: [],
     display_image: null,
     final_display_image: '/img/upload_container_image.webp',
-    output: JSON.stringify({'message': 'upload a shipping container image'}, null, '\t')
+    output: JSON.stringify({'message': 'upload a shipping container image'}, null, '\t'),
+    dynamic_bg_color: '#d8c3a5'
   }),
   methods: {
     output_message(msg) {
@@ -107,6 +108,9 @@ export default {
           .then(response => response.json())
           .then(data => {
             this.output = JSON.stringify(data, null, '\t')
+            if (data['container_color'] && data['container_color'].length === 3) {
+              this.dynamic_bg_color = 'rgb(' + data['container_color'].reverse().join(',') + ')'
+            }
           })
           .catch(error => {
             this.output = JSON.stringify(error, null, '\t')
