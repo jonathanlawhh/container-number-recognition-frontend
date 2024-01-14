@@ -85,7 +85,7 @@ export default {
     input_image: [],
     display_image: null,
     final_display_image: '/img/upload_container_image.webp',
-    output: JSON.stringify({'message': 'Loading model...'}, null, '\t'),
+    output: JSON.stringify({'message': 'upload a shipping container image'}, null, '\t'),
     dynamic_bg_color: '#d8c3a5',
     allow_local_detection: true,
     model: null,
@@ -110,12 +110,13 @@ export default {
           }
         })
       }
-      let imgLoaded = await waitImgLoad(img)
+      await waitImgLoad(img)
 
       // get detection result
-      const rawModel = toRaw(this.model)
-      const tfImg = tf.browser.fromPixels(img).toInt();
-      const expandedDims = tfImg.expandDims();
+      tf.engine().startScope()
+      let rawModel = toRaw(this.model)
+      let tfImg = tf.browser.fromPixels(img).toInt();
+      let expandedDims = tfImg.expandDims();
 
       await rawModel.executeAsync(expandedDims).then(predictions => {
         this.set_output_message('prediction completed, parsing...')
@@ -146,8 +147,11 @@ export default {
 
           .finally(() => {
             this.set_output_message(this.local_detection)
-            tf.dispose([tfImg, expandedDims])
           })
+
+      tf.engine().endScope()
+      console.table(tf.memory())
+
     },
     async detect_container_number() {
       const tbp /** @type{File} */ = this.input_image[0]
@@ -174,6 +178,8 @@ export default {
 
       // If we allow local SSD to run and provide output
       if (this.allow_local_detection) {
+        // Only load model when necessary
+        await this.load_model()
         let res = await blobToData(tbp)
 
         await this.get_container_door(res)
@@ -214,12 +220,14 @@ export default {
             this.final_display_image = this.display_image
           })
       return true
+    },
+    async load_model() {
+      if (!this.model) {
+        this.model = await loadGraphModel("/model/model.json")
+      }
+      this.set_output_message('model loaded')
     }
   },
-  async mounted() {
-    this.model = await loadGraphModel("/model/model.json")
-    this.set_output_message('upload a shipping container image')
-  }
 }
 </script>
 
