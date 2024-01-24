@@ -120,16 +120,19 @@ export default {
 
       await rawModel.executeAsync(expandedDims).then(predictions => {
         this.set_output_message('prediction completed, parsing...')
-        // for (let i = 0; i < predictions.length; i++) {
-        //   console.log(i, predictions[i].arraySync()[0])
-        // }
+
+        const predPercIdx = {
+          'probability': 1,
+          'bbox': 6,
+          'classes': 3,
+        }
 
         let detection_res = []
-        for (let i = 0; i < predictions[0].arraySync()[0].length; i++) {
-          if (predictions[3].arraySync()[0][i] > 0.8) {
+        for (let i = 0; i < predictions[predPercIdx.classes].arraySync()[0].length; i++) {
+          if (predictions[predPercIdx.probability].arraySync()[0][i] > 0.7) {
             detection_res.push({
-              bbox: predictions[1].arraySync()[0][i],
-              probability: predictions[3].arraySync()[0][i]
+              bbox: predictions[predPercIdx.bbox].arraySync()[0][i],
+              probability: predictions[predPercIdx.probability].arraySync()[0][i]
             })
           }
         }
@@ -150,7 +153,7 @@ export default {
           })
 
       tf.engine().endScope()
-      console.table(tf.memory())
+      // console.table(tf.memory())
 
     },
     async detect_container_number() {
@@ -182,7 +185,7 @@ export default {
         await this.load_model()
         let res = await blobToData(tbp)
 
-        await this.get_container_door(res)
+        let tcd = await this.get_container_door(res)
         if (this.local_detection.length === 0) {
           this.set_output_message('no containers detected. this could be due to image quality or container being too far.')
           this.final_display_image = this.display_image
