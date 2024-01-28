@@ -31,4 +31,23 @@ useSeoMeta({
   ogImage: 'https://cnrai.jonathanlawhh.com/img/og/container_ai_header.jpg',
   twitterCard: 'summary_large_image',
 })
+
+useHead({
+  script: [
+    {
+      hid: "ld-json",
+      type: "application/ld+json",
+      textContent: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "dateCreated": "2024-01-28T00:00:00-05:00",
+        "applicationCategory": "Logistics",
+        "name": title,
+        "alternateName": "CNRAI",
+        "url": "https://reviewnator.jonathanlawhh.com/",
+        "operatingSystem": "Any"
+      })
+    }
+  ]
+})
 </script>

@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     build: {
         transpile: ['vuetify'],
     },
-    modules: ['nuxt-simple-sitemap'],
+    modules: ['nuxt-simple-sitemap', 'nuxt-gtag'],
     site: {
         url: 'https://cnrai.jonathanlawhh.com/',
         name: 'CNRAI',
@@ -34,4 +34,7 @@ export default defineNuxtConfig({
             ctnrApiUrl: process.env.NUXT_CTNR_API_URL
         }
     },
+    gtag: {
+    //    Using ENV NUXT_PUBLIC_GTAG_ID
+    }
 })
