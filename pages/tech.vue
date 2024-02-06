@@ -15,7 +15,21 @@
             <p>Using a dashcam on my way to work</p>
           </div>
         </div>
+        <div style="position: relative; height: 480px; background: url('/img/ai-model-bg.svg'); background-size: cover">
+          <div style="height: 320px; position: absolute; top: 0; width: 100%; background-image: linear-gradient(180deg, #eae7dc, rgba(255, 255, 255, 0))">
+
+          </div>
+          <div style="padding: 8px; position: absolute; top: 25%; left: 2%;">
+            <h3>Using object detection and OCR to evaluate final output</h3>
+            <p>
+              <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md"
+                 target="_blank">SSD MobileNet V2</a> fine tuned to detect a container door.
+              <br>
+              Microsoft Vision API used to perform Optical Character Recognition (OCR).</p>
+          </div>
+        </div>
       </v-col>
+
     </v-row>
   </div>
 
@@ -56,7 +70,7 @@ export default {
 
       // table
 
-      for (let i = 0; i < ctnrTable.length; i ++) {
+      for (let i = 0; i < ctnrTable.length; i++) {
 
         const element = document.createElement('img');
         element.className = 'element';
